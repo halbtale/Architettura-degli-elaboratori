@@ -29,7 +29,7 @@ $$
 err_r=\frac{err_a}{|R|}\leq \frac{1}{|R|\cdot2^{k_F}}
 $$
 - Molto grande per numeri vicini allo zero
-![[Immagine 1.png]]
+![[4. Rappresentazione di numeri reali/Immagine 1.png]]
 ### floating point
 - Rappresentazione a virgola mobile
 - Standard IEEE 754
@@ -38,7 +38,7 @@ $$R=M\cdot2^E=(1.\widetilde{M})_2\cdot2^E$$
 - $E$: ==caratteristica==
 #### encoding
 $$R_{Float}(q)=(x_{31}\dots x_0)$$
-![[Immagine 2.png]]
+![[4. Rappresentazione di numeri reali/Immagine 2.png]]
 - ==s==: 1 bit segno
 - ==e==: 8 bit esponente (codifica eccesso P=127)
 	- $e=R_{E,127,8}(E)=R_{N,8}(E+127)$
@@ -78,7 +78,7 @@ $$
 d=|(1.\widetilde{M})_2\cdot2^E-((1.\widetilde{M})_2+2^{-23})\cdot2^E|=2^{E-23}
 $$$$
 err_{a}\leq\frac{d}{2}
-$$![[Immagine 3.png]]
+$$![[4. Rappresentazione di numeri reali/Immagine 3.png]]
 #### errore relativo
 $$
 err_r=\frac{err_a}{|R|}\leq2^{-23}
@@ -97,4 +97,4 @@ $$
 ### double precision floating point
 - 64 bit, precisione doppia
 $$R=M\cdot2^E$$
-![[Immagine 4.png]]
+![[4. Rappresentazione di numeri reali/Immagine 4.png]]
