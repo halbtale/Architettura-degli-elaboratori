@@ -48,6 +48,9 @@
 - 16 bit: "**half-word**"
 - 32 bit: "**word**" (word si basa su taglia memoria -> computer a 32 bit)
 - 64 bit: "**double-word**"
+### registro da un bit
+- Dispositivo in grado di memorizzare un bit
+![[6. Reti combinatorie/Immagine 3.png|300]]
 ### reti logiche combinatorie
 - Valori uscita determinati **UNIVOCAMENTE** dai valori in entrata
 - Caratteristiche
@@ -62,15 +65,59 @@
 		- se ho tre/quattro input: 00/01/10/11 (servono 2 bit)
 		- in generale, il numero massimo di input esprimibili è dato da $n=2^{x}$, $x$ numero di bit di controllo, dati $n$ input sono necessari $x=\log_2(n)$ bit di controllo
 - $1$ bit di output
-![[Immagine 5.png|200]]
-#### esempio
+#### multiplexer 2/1
 - A,B: linee input
 - C: bit di controllo
 	- linea che decide quale di A o B propagare in output
 	- C=0 -> trasmetto A
 	- C=1 -> trasmetto B
 - Y: output
+![[Immagine 5.png|200]]
+![[Pasted image 20240307123517.png|400]]
+### decodificatore n/2^n
+- $n$ bit di input
+- $2^n$ bit di output
+- I bit di input codificano in modo univoco quale segnale di output attivare
+![[Pasted image 20240307123853.png|200]]
+#### realizzazione
+- Sfrutto porta logica AND
+	- metto i NOT sui bit che voglio che si attivino quando sono 0
+### funzioni logiche n/1
+- $n$ input -> combinazioni valori possibili: $2^n$
+- 1 output -> valori possibili: $2$
+- Funzioni logiche generabili (combinazioni totali):
+	- $2^{2^n}$
+### funzioni logiche n/m
+- $n$ input -> combinazione possibili valori: $2^n$
+- $m$ output -> combinazione possibili valori: $2^m$
+- Funzioni logiche generabili (combinazioni totali):
+	- $(2^m)^{2^n}$
+### algebra booleana
+![[Pasted image 20240307125055.png]]
+### somma di prodotti
+- Tecnica per generare la funzione logica da tabella di verità
+- Osservo quando output = 1
+	- trovo condizione di ogni riga in cui E=1 (attraverso prodotti)
+	- sommo tutte le condizioni
+![[Pasted image 20240307125736.png]]
+### prodotti di somme
+- Tecnica per generare la funzione logica da tabella di verità
+- Osservo quando output = 0
+	- trovo condizione di ogni riga in cui E=0 (attraverso somma)
+	- moltiplico tutte le condizioni
+![[Pasted image 20240307130105.png]]
+### sintesi di un half-adder
+- Somma di due bit
+- $S'$ cifra meno significativa
+- $C'$ cifra più significativa (o bit di riporto)
+![[Pasted image 20240307130342.png]]
+- La funzione logica si può costruire con **somma di prodotti** fatta separatamente per ogni bit
+- Funzione logica finale:
+### sintesi di un full-adder
+- Permette di sommare 3 bit
+	- $3$ bit input
+	- $2$ bit output
+- Si può esprimere come combinazione di due "half-adder"
 
-### registro da un bit
-- Dispositivo in grado di memorizzare un bit
-![[6. Reti combinatorie/Immagine 3.png|300]]
+>[!note] Integro...
+
