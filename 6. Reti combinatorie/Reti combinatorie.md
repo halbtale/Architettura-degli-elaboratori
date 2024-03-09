@@ -31,7 +31,7 @@
 	- 4. NOR
 	- si possono sfruttare leggi di De Morgan
 - Esempio:
-![[Immagine 6.png|500]]
+![[6. Reti combinatorie/Immagine 6.png|500]]
 ### tabelle di verità
 - Modo per rappresentare una funzione
 	- esplicita i valori di uscita per ogni combinazione dei valori di ingresso
@@ -48,14 +48,45 @@
 - 16 bit: "**half-word**"
 - 32 bit: "**word**" (word si basa su taglia memoria -> computer a 32 bit)
 - 64 bit: "**double-word**"
-### registro da un bit
-- Dispositivo in grado di memorizzare un bit
-![[6. Reti combinatorie/Immagine 3.png|300]]
 ### reti logiche combinatorie
 - Valori uscita determinati **UNIVOCAMENTE** dai valori in entrata
 - Caratteristiche
 	- **priva di stato**
 	- **interamente descritta dalla sua tabella di verità**
+### funzioni logiche n/1
+- $n$ input -> combinazioni valori possibili: $2^n$
+- 1 output -> valori possibili: $2$
+- Funzioni logiche generabili (combinazioni totali):
+	- $2^{2^n}$
+### funzioni logiche n/m
+- $n$ input -> combinazione possibili valori: $2^n$
+- $m$ output -> combinazione possibili valori: $2^m$
+- Funzioni logiche generabili (combinazioni totali):
+	- $(2^m)^{2^n}$
+### algebra booleana
+![[6. Reti combinatorie/Immagine 9.png]]
+- Xor Identities
+	- $A\cdot \overline{B}\,+\overline{A}\cdot B\, = A \oplus B$
+	- $A\cdot B\,+\overline{A}\cdot \overline{B}\, = \overline{A \oplus B}$
+
+### somma di prodotti
+- Tecnica per generare la funzione logica da tabella di verità
+- Osservo quando output = 1
+	- trovo condizione di ogni riga in cui E=1 (attraverso prodotti)
+	- sommo tutte le condizioni
+![[6. Reti combinatorie/Immagine 10.png]]
+$$
+E=\overline{A}\cdot\overline{B}+A\cdot B
+$$
+### prodotti di somme
+- Tecnica per generare la funzione logica da tabella di verità
+- Osservo quando output = 0
+	- trovo condizione di ogni riga in cui E=0 (attraverso somma)
+	- moltiplico tutte le condizioni
+![[6. Reti combinatorie/Immagine 11.png]]
+$$
+E=(A+\overline{B})\cdot(\overline{A}+B)
+$$
 ### multiplexer n/1
 - $n$ bit di input
 - $\log_2(n)$ bit di controllo
@@ -72,52 +103,23 @@
 	- C=0 -> trasmetto A
 	- C=1 -> trasmetto B
 - Y: output
-![[Immagine 5.png|200]]
-![[Pasted image 20240307123517.png|400]]
-### decodificatore n/2^n
+![[6. Reti combinatorie/Immagine 5.png|200]]
+![[6. Reti combinatorie/Immagine 7.png|400]]
+### encoder 2^n/n
+- $2^n$ bit di input
+- $n$ bit di output
+- Attivando $i-esimo$ input, viene codificato negli output in binario il valore $i$
+#### esempio decoder 4/2
+- L'implementazione circuitale si può ricavare dalle mappe di Karnaugh
+![[6. Reti combinatorie/Immagine 3.png|200]]
+![[6. Reti combinatorie/Immagine 13.png|200]]
+
+### decoder n/2^n
 - $n$ bit di input
 - $2^n$ bit di output
 - I bit di input codificano in modo univoco quale segnale di output attivare
-![[Pasted image 20240307123853.png|200]]
+	- $i-esima$ uscita dove $i$ è il valore binario degli ingressi
+![[6. Reti combinatorie/Immagine 8.png|200]]
 #### realizzazione
 - Sfrutto porta logica AND
 	- metto i NOT sui bit che voglio che si attivino quando sono 0
-### funzioni logiche n/1
-- $n$ input -> combinazioni valori possibili: $2^n$
-- 1 output -> valori possibili: $2$
-- Funzioni logiche generabili (combinazioni totali):
-	- $2^{2^n}$
-### funzioni logiche n/m
-- $n$ input -> combinazione possibili valori: $2^n$
-- $m$ output -> combinazione possibili valori: $2^m$
-- Funzioni logiche generabili (combinazioni totali):
-	- $(2^m)^{2^n}$
-### algebra booleana
-![[Pasted image 20240307125055.png]]
-### somma di prodotti
-- Tecnica per generare la funzione logica da tabella di verità
-- Osservo quando output = 1
-	- trovo condizione di ogni riga in cui E=1 (attraverso prodotti)
-	- sommo tutte le condizioni
-![[Pasted image 20240307125736.png]]
-### prodotti di somme
-- Tecnica per generare la funzione logica da tabella di verità
-- Osservo quando output = 0
-	- trovo condizione di ogni riga in cui E=0 (attraverso somma)
-	- moltiplico tutte le condizioni
-![[Pasted image 20240307130105.png]]
-### sintesi di un half-adder
-- Somma di due bit
-- $S'$ cifra meno significativa
-- $C'$ cifra più significativa (o bit di riporto)
-![[Pasted image 20240307130342.png]]
-- La funzione logica si può costruire con **somma di prodotti** fatta separatamente per ogni bit
-- Funzione logica finale:
-### sintesi di un full-adder
-- Permette di sommare 3 bit
-	- $3$ bit input
-	- $2$ bit output
-- Si può esprimere come combinazione di due "half-adder"
-
->[!note] Integro...
-
