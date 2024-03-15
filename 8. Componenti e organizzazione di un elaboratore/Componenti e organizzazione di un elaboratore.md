@@ -28,7 +28,7 @@
 - Maggiore consumo energetico
 ### sistema per la programmazione in software
 ![[8. Componenti e organizzazione di un elaboratore/Immagine 1.png|500]]
-- Si assegna un univoco ad ogni possibile sequenza di segnali
+- Si assegna un ==codice univoco== ad ogni possibile sequenza di segnali
 	- ogni codice denota un'**istruzione**
 - **Instruction Interpreter**
 	- componente hardware per **tradurre codici** in **segnali**
@@ -47,11 +47,10 @@
 #### memoria
 ![[8. Componenti e organizzazione di un elaboratore/Immagine 5.png|150]]
 - Serve per salvare:
-	- istruzioni
-	- dati di input
-	- dati temporanei
-- Divisa in locazioni (blocchi)
-	- ogni blocco è una **word**
+	- **istruzioni**
+	- **dati** di input
+	- **dati** temporanei
+- Divisa in ==locazioni== (blocchi)
 	- accessibili tramite un **indirizzo**
 #### bus
 - Serve per connettere i vari moduli (CPU/IO/Memoria)
@@ -87,7 +86,7 @@
 #### ciclo di un'istruzione nel dettaglio
 ![[8. Componenti e organizzazione di un elaboratore/Immagine 13.png|600]]
 - **Instruction fetch**
-	- recupera istruzione da indirizzo memoria del PC
+	- recupera istruzione da indirizzo memoria del PC e la salva in registro IR
 - **Instruction operation decoding**
 	- estrae tipo di operazione dall'istruzione
 - **Operand address calculation**
