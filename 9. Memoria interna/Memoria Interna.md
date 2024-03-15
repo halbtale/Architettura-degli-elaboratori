@@ -1,74 +1,99 @@
 ## memoria interna
 ### caratteristiche dellla memoria centrale
 - Divisa in ==locazioni==
-- Ogni locazione contiene $L$ bit
-- Con indirizzi di $n$ bit, ci possono essere $2^n$ locazioni
-	- dimensione indirizzi dipendono da dimensione bus e dimensione memoria
-- Dimensione **massima** memoria
-	- $L\cdot2^n$
+	- ogni locazione contiene $L$ bit (in genere $1\,byte=8\,bit$)
+	- ogni locazione è individuata da un indirizzo
+- Con indirizzi di $N$ bit, possono essere indicizzabili $2^n$ locazioni
+- Dimensione totale: $L\cdot N$
 ### ordinamento dei bite in memoria
-- Architettura ARM
-	- $word=32bit=4 byte$
-	- $l=8 bit=1 byte$
-	- vengono lette 4 locazioni consecutive
-#### notazione little o big endian
-- Sceglie se leggere notazioni da basso verso l'alto o dall'alto verso il basso
-### memoria
-- Insieme di registri
+#### dimensione locazione memoria ≠ dimensione word
+- Problema:
+	- devo salvare una word: 4 byte
+	- una locazione contiene solo 1 byte
+- Soluzione:
+	- salvo 4 byte in 4 locazioni consecutive
+#### big e little endian
+- ==Big Endian==
+	- memorizzata dalla parte più significativa a quella meno significativa
+- ==Little Endian==
+	- memorizzata dalla parte meno significativa a quella più significativa
+#### esempio
+- Memorizzare: $0xAABBCCDD$
+![[Pasted image 20240315181407.png|300]]
+### cella di memoria
+- Può assumere due stati: $0$ e $1$
+- Può essere scritta (almeno una volta)
+- Può essere letta più volte
 ### tipi di memoria
 ![[Pasted image 20240314134511.png]]
+### memorie persistenti
 #### rom (read only memory)
-- Dati scritti sull'hardware
+- Contenuto è **permanente** e non può essere cambiato
+- Dati scritti sull'**hardware** durante il processo di fabbricazione
+- Inserimento dati **costoso** 
 #### prom (programmable rom)
-- Si può scrivere il valore in una memoria vuota
-- Una volta scritta, non si può più cambiare
+- Contenuto è **permanente** e non può essere cambiato
+- Si può scrivere il valore in una memoria vuota **dopo** processo di fabbricazione
+- Maggiore flessibilità e minor costo rispetto alla rom
 ####  eprom (erasable prom)
-- Si può cancellare con radiazione ultravioletta
+- Memoria **persistente**
+- Si può cancellare **tutta** la memoria con **radiazioni ultraviolette**
 #### eeprom (electically erabable prom)
-- Si può cancellare con segnali elettrici singoli bit
+- Si possono cancellare **singoli bit** con segnali elettrici
+- + costosa di EPROM e densità minore
 #### flash memory
-- La cancellazione avviene per settori
+- La **cancellazione** avviene per **settori**
 - Compromesso tra EPROM e EEPROM
-#### ram (random access memory)
-- Memoria che si può leggere e scrivere facilmente
-- Tipologie
-	- **Dynamic RAM (DRAM)**
-		- con condensatore, che dopo un po' si scarica
-		- + piccola, + lenta, + economica
-		- utilizzata come memoria principale
-		- 2/3 ns
-	- **Static RAM (SRAM)**
-		- simile a flip-flop
-		- + grande, + veloce, + costosa
-		- utilizzata come cache
-		- 20/30 ns
+	- ha densità più alta ed è meno costosa di EEPROM
+### memoria volatile: ram (random-access memory)
+- Memoria ==volatile== in cui si può leggere e scrivere efficientemente
+#### dynamic ram (dram)
+- Bit rappresentato da presenza o meno della carica in un ==condensatore==
+- Richiede ==refresh== periodico
+	- condensatore tende a disperdere la carica
+	- i dati vengono periodicamente letti e riscritti
+- **Alta densità, velocità accesso limitata**
+- Utilizzata come ==memoria principale==
+- 2/3 ns
+![[Pasted image 20240315183243.png|200]]
+#### static ram (sram)
+- Bit viene salvato in un ==flip-flop==
+- NO refresh
+- **Bassa densità, alta velocità accesso**
+- Utilizzata come ==cache==
+- 20/35 ns
+![[Pasted image 20240315183258.png|300]]
 ### organizzazione della memoria
 - $N$ locazioni e $L$ bit/locazione
+- Implementata attraverso struttura gerarchica
 - **Chip di memoria**
-	- numero locazioni e bit/locazione fissi
-	- $N_{1}<N$ e $L_{1}<L$
-	- es. chip con 1G locazioni da 8 bit
+	- contiene $N_{1}$ locazioni con $L_1$ bit/locazione
+	- es. $N_1=1G\,locazioni$ e $L_{1}=8\,bit=1\,byte$ 
 - **Modulo**
-	- + chip di memoria vengono messi assieme
-	- Espando bit per locazione: $L_{1}\rightarrow L$
-	- es. modulo con 1G locazioni da 64 bit
+	- Insieme di chip di memoria -> incrementa dimensione bit/locazione
+	- Es. 8 chip -> $L=8\cdot L_1=8\cdot8=64\,bit=8\,byte$ 
 - **Banchi**
-	- Metto insieme + moduli per ottenere $N_{1}\rightarrow N$ locazioni
-	- es. banco con 16G locazioni da 64 bit
+	- Insieme di più moduli -> incrementa numero di locazioni totali
+	- Es. 2 moduli (uno per lato) -> $N_2=2\cdot N_1=2\cdot 1G\,locazioni=2G\,locazioni$
+- **Memoria RAM**
+	- Insieme di più banchi
+	- Es. 4 banchi -> $N=4\cdot N_2=4\cdot 2G\,locazioni=8G\,locazioni$
+	- Dimensione totale: $L\cdot N=8G locazioni \cdot 8\,byte/locazione=64GB$
+![[Pasted image 20240315185136.png|200]]
 ### organizzazione dram
 ![[Pasted image 20240315124504.png|500]]
-- La memoria è una matrice (articolata in 2 dimensione)
-	- il segnale deve percorrere una distanza di un ordine di grandezza molto inferiore
+- La memoria è una **matrice** (articolata in 2 dimensione):
+	- così il segnale deve percorrere una distanza molto inferiore
 - Posso comunicare l'indirizzo in due parti:
-	- prima la riga 
+	- prima la riga (attiva RAS)
 		- copiato in refresh circuitry
-	- poi la colonna
+	- poi la colonna (attiva CAS)
 		- letto da refresh circuitry
-- Bit di controllo
-	- RAS: indirizzo indica riga
-	- CAS: indirizzo indica colonna
-	- WE: write enable (effettua scrittura)
-	- OE: output enable (effettua lettura)
+- **Bit di controllo**
+	- ==RAS== (Row address select): indirizzo indica riga
+	- ==CAS== (Column address select): indirizzo indica colonna
+	- ==WE== (Write enable): effettua scrittura
+	- ==OE== (Output enable): effettua lettura
 - Operazione di refresh
 	- ogni tot millisecondi devo leggere e riscrivere ogni elemento della memoria
 	- refresh counter
