@@ -27,7 +27,6 @@
 	- Si assume che non siano mai entrambi a 1
 ![[7. Reti logiche sequenziali/Immagine 1.png|200]]
 #### Implementazione
-	![[Pasted image 20240308130512.png|300]]
 - Rimettere gli output negli input permette di mantenere lo stato
 	- dopo qualche iterazione si stabilizza
 	- se R,S vengono impostati a 0, lo stato si preserva
