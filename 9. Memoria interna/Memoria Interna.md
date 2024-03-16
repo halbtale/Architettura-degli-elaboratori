@@ -19,13 +19,13 @@
 	- memorizzata dalla parte meno significativa a quella più significativa
 #### esempio
 - Memorizzare: $0xAABBCCDD$
-![[Pasted image 20240315181407.png|300]]
+![[9. Memoria interna/Immagine 3.png|300]]
 ### cella di memoria
 - Può assumere due stati: $0$ e $1$
 - Può essere scritta (almeno una volta)
 - Può essere letta più volte
 ### tipi di memoria
-![[Pasted image 20240314134511.png]]
+![[9. Memoria interna/Immagine 1.png]]
 ### memorie persistenti
 #### rom (read only memory)
 - Contenuto è **permanente** e non può essere cambiato
@@ -55,14 +55,49 @@
 - **Alta densità, velocità accesso limitata**
 - Utilizzata come ==memoria principale==
 - 2/3 ns
-![[Pasted image 20240315183243.png|200]]
+![[9. Memoria interna/Immagine 4.png|200]]
 #### static ram (sram)
 - Bit viene salvato in un ==flip-flop==
 - NO refresh
 - **Bassa densità, alta velocità accesso**
 - Utilizzata come ==cache==
 - 20/35 ns
-![[Pasted image 20240315183258.png|300]]
+![[9. Memoria interna/Immagine 5.png|300]]
+### organizzazione chip dram
+![[9. Memoria interna/Immagine 2.png|500]]
+- La memoria è una **matrice** (articolata in 2 dimensione):
+	- così il segnale deve percorrere una distanza molto inferiore
+	- ogni locazione è determinata da un indirizzo (riga + colonna)
+	- ogni locazione può contenere + bit
+- Indirizzo comunicato al chip in due parti
+	- prima indirizzo **riga**
+		- ==RAS== (Row address select): indirizzo indica riga
+	- poi indirizzo **colonna** 
+		- ==CAS== (Column address select): indirizzo indica colonna
+- Selezionata la cella (o celle) di memoria ad un indirizzo
+	- ==WE== (Write enable): effettua scrittura
+		- viene scritta la locazione da "**Data Input Buffer**"
+	- ==OE== (Output enable): effettua lettura
+		- viene letta la locazione su "**Data Output Buffer**"
+- Operazione di refresh
+	- ogni tot millisecondi devo leggere e riscrivere ogni elemento della memoria
+	- refresh counter
+		- indica indirizzo riga
+	- MUX fa passare segnale del refresh
+		- viene letta riga, copiata in refresh circuitry e riscritta
+- Sono presenti anche dei pin **Vcc** e **Vss** per il funzionamento del chip
+- SRAM è identica ma non ha "Refresh Circuitry"
+![[9. Memoria interna/Immagine 7.png|200]]
+#### ottimizzazione refresh
+- Analisi
+	- $T_r=\text{periodo in cui effettuare refresh memoria}$
+	- $N=\text{numero elementi su cui effettuare refresh}$
+	- $t_r=\frac{T_r}{N}=\text{tempo disponibile per fare refresh di un elemento}$
+	- $t_a=\text{tempo di accesso per effettuare refresh di un elemento}$
+	- $P=\frac{t_a}{t_r}\cdot100=\text{tempo in percentuale impiegato per refresh}$
+- Osservazione
+	- conviene fare il refresh una riga alla volta invece che un bit alla volta
+		- riducendo N, si diminuisce il tempo percentuale impiegato per il refresh
 ### organizzazione della memoria
 - $N$ locazioni e $L$ bit/locazione
 - Implementata attraverso struttura gerarchica
@@ -79,25 +114,7 @@
 	- Insieme di più banchi
 	- Es. 4 banchi -> $N=4\cdot N_2=4\cdot 2G\,locazioni=8G\,locazioni$
 	- Dimensione totale: $L\cdot N=8G locazioni \cdot 8\,byte/locazione=64GB$
-![[Pasted image 20240315185136.png|200]]
-### organizzazione dram
-![[Pasted image 20240315124504.png|500]]
-- La memoria è una **matrice** (articolata in 2 dimensione):
-	- così il segnale deve percorrere una distanza molto inferiore
-- Posso comunicare l'indirizzo in due parti:
-	- prima la riga (attiva RAS)
-		- copiato in refresh circuitry
-	- poi la colonna (attiva CAS)
-		- letto da refresh circuitry
-- **Bit di controllo**
-	- ==RAS== (Row address select): indirizzo indica riga
-	- ==CAS== (Column address select): indirizzo indica colonna
-	- ==WE== (Write enable): effettua scrittura
-	- ==OE== (Output enable): effettua lettura
-- Operazione di refresh
-	- ogni tot millisecondi devo leggere e riscrivere ogni elemento della memoria
-	- refresh counter
-		- indica indirizzo riga
-	- MUX fa passare segnale del refresh
-		- viene letta riga, copiata in refresh circuitry e riscritta
-	- facendo una riga alla volta, è molto + efficiente
+![[9. Memoria interna/Immagine 6.png|200]]
+![[9. Memoria interna/Immagine 8.png|400]]
+![[9. Memoria interna/Immagine 9.png]]
+
