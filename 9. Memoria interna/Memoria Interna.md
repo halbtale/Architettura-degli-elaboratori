@@ -26,6 +26,8 @@
 - Può essere letta più volte
 ### tipi di memoria
 ![[9. Memoria interna/Immagine 1.png]]
+<div style="page-break-after: always;"></div>
+
 ### memorie persistenti
 #### rom (read only memory)
 - Contenuto è **permanente** e non può essere cambiato
@@ -63,6 +65,8 @@
 - Utilizzata come ==cache==
 - 20/35 ns
 ![[9. Memoria interna/Immagine 5.png|300]]
+<div style="page-break-after: always;"></div>
+
 ### organizzazione chip dram
 ![[9. Memoria interna/Immagine 2.png|500]]
 - La memoria è una **matrice** (articolata in 2 dimensione):
