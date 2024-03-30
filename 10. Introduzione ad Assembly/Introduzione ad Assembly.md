@@ -37,18 +37,18 @@
 - Utilizzati per memorizzazione di dati temporanei
 
 #### registri con utilizzi particolari
-- R11: **FP**
+- R11: ==FP==
 	- Frame Pointer
 	- utilizzato per implementare funzioni
-- R12: **IP**
+- R12: ==IP==
 	- Scratch register
-- R13: **SP**
+- R13: ==SP==
 	- Stack Pointer
 	- contiene puntatore ad uno stack nella memoria (usato da push/pop)
-- R14: **LR**
+- R14: ==LR==
 	- Link register
 	- utilizzato per implementare funzioni
-- R15: **PC
+- R15: ==PC==
 	- Program Counter
 	- punta all'istruzione in memoria successiva
 	- ```PC = CURRENT_IND + 4```
@@ -107,7 +107,9 @@
 	- ```XX=GT,GE,LT,LE,EQ,NE```
 - Chiamata a procedura (procedure call)
 	- invoca una funzione
-	- ```BL``` (branch and link)
+	- ```BL``` (branch and link) 
+<div style="page-break-after: always;"></div>
+
 ### operandi di un'istruzione
 - Operandi specificano dove trovare valori input e dove salvare risultato
 - Tipologie
