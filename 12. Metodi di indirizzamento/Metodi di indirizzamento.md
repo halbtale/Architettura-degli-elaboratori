@@ -1,6 +1,6 @@
 ## metodi di indirizzamento
 ### tabella tipologie di indirizzamento
-![[Pasted image 20240330144745.png]]
+![[12. Metodi di indirizzamento/Immagine 9.png]]
 ### indirizzamento Immediato
 ![[12. Metodi di indirizzamento/Immagine 1.png|200]]
 - Il valore da utilizzare è indicato nel **campo operando**
@@ -60,6 +60,7 @@ MOV R0, ((0x00AA))
 ```
 MOV R0, R1
 ```
+<div style="page-break-after: always;"></div>
 
 ### indiretto di registro
 ![[12. Metodi di indirizzamento/Immagine 6.png|300]]
