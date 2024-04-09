@@ -39,6 +39,9 @@
 ![[13. Codifica delle istruzioni/Immagine 1.png|600]]
 - Instruction prefix
 	- dà informazioni su quanto lunga è l'istruzione
+
+<div style="page-break-after: always;"></div>
+
 ### codifica nell'architettura aRM
 ![[13. Codifica delle istruzioni/Immagine 2.png|700]]
 - ==Cond==
@@ -62,7 +65,7 @@
 - ==Load/Store Register Offset==
 	- ```LDR R0, [R2]```
 	- ```STR R0, [R2]```
-- ==Load/Store Multiple```
+- ==Load/Store Multiple==
 	- ```PUSH {R0, R2, R3}```
 #### branch
 - ==Branch with link==
@@ -70,10 +73,10 @@
 ### codifica di valori immediati
 ![[13. Codifica delle istruzioni/Immagine 6.png|300]]
 - ==c==
-	- 4 bit
+	- 8 bit
 	- definiscono un valore
 - ==r==
-	- 8 bit
+	- 4 bit
 	- rotazione a destra di 2r posizioni
 - Non posso rappresentare tutti i numeri (no 0x102)
 	- il numero deve rimanere dentro agli 8 bit con le rotazioni
@@ -93,5 +96,5 @@
 	- **Registro destinazione**: R0  
 	- **Valore immediato**: 0x104
 ### reference 
-![[13. Codifica delle istruzioni/Immagine 7.png|600]]
+![[13. Codifica delle istruzioni/Immagine 7.png|400]]
 ![[13. Codifica delle istruzioni/Immagine 8.png|600]]
