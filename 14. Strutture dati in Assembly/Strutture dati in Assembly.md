@@ -24,6 +24,9 @@ LDR R0, =V
 MOV R1, #i
 LDR R2, [R0, R1, LSL #2]
 ```
+
+<div style="page-break-after: always;"></div>
+
 ### matrice
 - Bisogna definire:
 	- **indirizzo iniziale**, $M$
@@ -184,6 +187,9 @@ POP {R5}
 POP {R6}
 POP {R7}
 ```
+
+<div style="page-break-after: always;"></div>
+
 ### linked list
 - Ogni elemento della lista contiene
 	- ==campo puntatore==
@@ -212,7 +218,7 @@ LDR R1, [R1]
 	- in R0 metto puntatore a NIL
 ```
 		LDR R1, =HEAD    @puntatore iniziale
-		MOV R3, #NIL      @R3=NIL
+		MOV R3, #NIL     @R3=NIL
 		
 CERCA:  LDR R2, [R1]     @R2 conterrà il puntatore successivo
 		CMP R2, #NIL     @controlla se R2 è l'ultimo elemento (NIL)

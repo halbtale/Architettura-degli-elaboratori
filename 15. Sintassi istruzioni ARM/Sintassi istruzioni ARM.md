@@ -54,11 +54,13 @@
 #### opzioni particolari
 - Si può modificare la dimensione di lettura/scrittura aggiungendo suffissi
 	- ```B```: byte
+		- in LDR l'espansione a 32 big mette i bit a 0
 	- ```H```: halfword
+		- in LDR l'espansione a 32 big mette i bit a 0
 	- ```SB```: byte con segno
-		- solo su LDR: i bit più significativi liberi nel registro vengono impostati al segno
+		- in LDR l'espansione a 32 big mette i bit di segno
 	- ```SH```: halfword con segno
-		- solo su LDR: i bit più significativi liberi nel registro vengono impostati al segno
+		- in LDR l'espansione a 32 big mette i bit di segno
 ![[15. Sintassi istruzioni ARM/Immagine 1.png|300]]
 #### sintassi classe 2 (word/unsigned byte)
 - ==```LDR|STR{B} Rd, <addressing_mode2>```==
@@ -73,6 +75,9 @@
 	- post-incremento immediato: ```[Rn], #±<offset_12>```
 	- post-incremento da registro: ```[Rn], ±Rm```
 	- post-incremento da registro scalato:  ```[Rn], ±Rm, <sop> #<shift_imm>```
+
+<div style="page-break-after: always;"></div>
+
 #### sintassi classe 3 (halfword/signed byte)
 - ==```STR|LDR[H] Rd, <addressing_mode3>```==
 - ==```LDR[SH|SB] Rd, <addressing_mode3>```==
