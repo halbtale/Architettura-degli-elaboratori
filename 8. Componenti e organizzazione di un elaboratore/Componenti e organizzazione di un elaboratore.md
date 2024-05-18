@@ -151,13 +151,13 @@
 		- AC $\leftarrow$ 3
 - Viene ripetuto il ciclo con PC=301
 ### interfaccia delle componenti
-![[Immagine 15.png|600]]
+![[8. Componenti e organizzazione di un elaboratore/Immagine 15.png|600]]
 - Non mi interessa l'implementazione dei diversi moduli
 	- mi basta sapere gli input e gli output
 ### bus
 - Mezzo di **trasmissione** condiviso che collega più componenti
 - Nei computer moderni sono presenti più bus invece di uno unico
-![[Immagine 16.png|500]]
+![[8. Componenti e organizzazione di un elaboratore/Immagine 16.png|500]]
 #### linee di comunicazione
 - Ogni bus consiste in più linee di comunicazione
 - ==Data Bus==
@@ -177,4 +177,4 @@
 		- **Memory write** $\rightarrow$ scrivi i dati trasmessi all'indirizzo specificato
 		- **Memory read** $\rightarrow$ leggi i dati all'indirizzo specificato
 		- **Clock** $\rightarrow$ per sincronizzare le operazioni
-![[Immagine 17.png|500]]
+![[8. Componenti e organizzazione di un elaboratore/Immagine 17.png|500]]

@@ -16,7 +16,7 @@
 - ==Debugger==
 	- permette di eseguire passo passo le istruzioni codificate
 	- ```gdb```o ```gdbgui```
-![[19. Compilatore/Immagine 2.png|700]]
+![[19. Compilatore/Immagine 2.png|600]]
 ### moduli sorgenti
 - Presenta due tipi di istruzioni
 	- ==istruzioni assembly==
